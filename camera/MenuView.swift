@@ -25,7 +25,8 @@ class MenuView: UITableView {
      */
     func setupView() {
         self.dataSource = self
-
+        self.delegate = self
+        self.register(UINib(nibName: "FriendsCell", bundle: nil), forCellReuseIdentifier: "FriendsCell")
         for view in self.subviews {
             guard let scrollView = view as? UIScrollView else {
                 continue
@@ -39,9 +40,13 @@ class MenuView: UITableView {
      Scroll to most visible cell.
      */
     func scrollToMostVisibleCell() {
-        let visibleRect = CGRect(origin: self.contentOffset, size: self.bounds.size)
+        let visibleRect = CGRect(
+            origin: self.contentOffset,
+            size: self.bounds.size
+        )
+
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        let visibleIndexPath: IndexPath = self.indexPathForRow(at: visiblePoint)!
+        let visibleIndexPath = self.indexPathForRow(at: visiblePoint)!
         self.scrollToRow(at: visibleIndexPath, at: .top, animated: true)
     }
 }
@@ -53,7 +58,6 @@ extension MenuView: UIScrollViewDelegate {
      Scroll view did end decelerating.
      */
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("did end deccelerating")
         self.scrollToMostVisibleCell()
     }
 
@@ -61,8 +65,17 @@ extension MenuView: UIScrollViewDelegate {
      Scroll view did end dragging.
      */
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("did end dragging")
         self.scrollToMostVisibleCell()
+    }
+}
+
+extension MenuView: UITableViewDelegate {
+
+    /**
+     Height for row at indexPath.
+     */
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }
 
@@ -77,18 +90,10 @@ extension MenuView: UITableViewDataSource {
     }
 
     /**
-     Height for row at indexPath.
-     */
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-
-    /**
      Cell for row at indexPath.
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        print(cell.isUserInteractionEnabled)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
         switch indexPath.row {
         case 0:
             cell.backgroundColor = .blue
