@@ -14,6 +14,7 @@
 		7A4D92D91ED36A7C0082863D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D92D71ED36A7C0082863D /* LaunchScreen.storyboard */; };
 		7A4D92E41ED36A7D0082863D /* cameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92E31ED36A7D0082863D /* cameraTests.swift */; };
 		7A4D92EF1ED36A7D0082863D /* cameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */; };
+		7A7469771ED6CDE000F13B27 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469761ED6CDE000F13B27 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		7A4D92EA1ED36A7D0082863D /* cameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraUITests.swift; sourceTree = "<group>"; };
 		7A4D92F01ED36A7D0082863D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A7469761ED6CDE000F13B27 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */,
 				7A4D92D01ED36A7C0082863D /* ViewController.swift */,
+				7A7469761ED6CDE000F13B27 /* MenuView.swift */,
 				7A4D92D21ED36A7C0082863D /* Main.storyboard */,
 				7A4D92D51ED36A7C0082863D /* Assets.xcassets */,
 				7A4D92D71ED36A7C0082863D /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A4D92D11ED36A7C0082863D /* ViewController.swift in Sources */,
+				7A7469771ED6CDE000F13B27 /* MenuView.swift in Sources */,
 				7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +518,7 @@
 				7A4D92F51ED36A7D0082863D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A4D92F61ED36A7D0082863D /* Build configuration list for PBXNativeTarget "cameraTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +527,7 @@
 				7A4D92F81ED36A7D0082863D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A4D92F91ED36A7D0082863D /* Build configuration list for PBXNativeTarget "cameraUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +536,7 @@
 				7A4D92FB1ED36A7D0082863D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
