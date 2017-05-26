@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// Menu view.
-class MenuView: UITableView {
+class MenuTableView: UITableView {
 
     /**
      Awake from nib method. Initialize values here.
@@ -18,6 +18,11 @@ class MenuView: UITableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+
+        print("Menu table view awake")
+
+        self.addBlurEffect(style: .dark, alpha: 1.0)
+
     }
 
     /**
@@ -27,6 +32,8 @@ class MenuView: UITableView {
         self.dataSource = self
         self.delegate = self
         self.register(UINib(nibName: "FriendsCell", bundle: nil), forCellReuseIdentifier: "FriendsCell")
+        self.register(UINib(nibName: "InvitationsCell", bundle: nil), forCellReuseIdentifier: "InvitationsCell")
+
         for view in self.subviews {
             guard let scrollView = view as? UIScrollView else {
                 continue
@@ -52,7 +59,7 @@ class MenuView: UITableView {
 }
 
 /// MenuView extension from UIScrollViewDelegate
-extension MenuView: UIScrollViewDelegate {
+extension MenuTableView: UIScrollViewDelegate {
 
     /**
      Scroll view did end decelerating.
@@ -69,43 +76,61 @@ extension MenuView: UIScrollViewDelegate {
     }
 }
 
-extension MenuView: UITableViewDelegate {
+extension MenuTableView: UITableViewDelegate {
 
     /**
      Height for row at indexPath.
      */
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 120
     }
 }
 
 /// MenuView extension from UITableViewDataSource
-extension MenuView: UITableViewDataSource {
+extension MenuTableView: UITableViewDataSource {
 
     /**
      Number of rows in section.
      */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     /**
      Cell for row at indexPath.
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
+
+        let cell: UITableViewCell?
+
         switch indexPath.row {
         case 0:
-            cell.backgroundColor = .blue
+            cell = tableView.dequeueReusableCell(withIdentifier: "FriendsCell", for: indexPath) as! FriendsCell
         case 1:
-            cell.backgroundColor = .yellow
-        case 2:
-            cell.backgroundColor = .green
+            cell = tableView.dequeueReusableCell(withIdentifier: "InvitationsCell", for: indexPath) as! InvitationsCell
         default:
-            return cell
+            return UITableViewCell()
         }
 
-        return cell
+        return cell!
+    }
+}
+
+extension UITableView {
+
+    /**
+     Add a simple blur effect.
+     - parameter style: Style you want (UIBlurEffectStyle).
+     - parameter alpha: Opacity you want (CGFloat).
+     */
+    func addBlurEffect(style: UIBlurEffectStyle, alpha: CGFloat) {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = alpha
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        self.backgroundView = blurEffectView
     }
 }
 

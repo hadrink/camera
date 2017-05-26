@@ -11,9 +11,12 @@ import UIKit
 
 /// Friends collection view cell.
 class FriendsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var profilePictureView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.profilePictureView.layer.cornerRadius = self.profilePictureView.bounds.width / 2
 
         print("Friends collection view cell awake")
     }

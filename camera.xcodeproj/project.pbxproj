@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A1C21331ED8448A00D80EDE /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C21321ED8448A00D80EDE /* CameraPreview.swift */; };
+		7A1C21351ED8449B00D80EDE /* CameraPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1C21341ED8449B00D80EDE /* CameraPreview.xib */; };
+		7A1C213A1ED84E2800D80EDE /* InvitationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */; };
+		7A1C213C1ED84E3400D80EDE /* InvitationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1C213B1ED84E3400D80EDE /* InvitationsCell.xib */; };
 		7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */; };
 		7A4D92D11ED36A7C0082863D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92D01ED36A7C0082863D /* ViewController.swift */; };
 		7A4D92D41ED36A7C0082863D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D92D21ED36A7C0082863D /* Main.storyboard */; };
@@ -14,12 +18,13 @@
 		7A4D92D91ED36A7C0082863D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D92D71ED36A7C0082863D /* LaunchScreen.storyboard */; };
 		7A4D92E41ED36A7D0082863D /* cameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92E31ED36A7D0082863D /* cameraTests.swift */; };
 		7A4D92EF1ED36A7D0082863D /* cameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */; };
-		7A7469771ED6CDE000F13B27 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469761ED6CDE000F13B27 /* MenuView.swift */; };
+		7A7469771ED6CDE000F13B27 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469761ED6CDE000F13B27 /* MenuTableView.swift */; };
 		7A74697A1ED7402900F13B27 /* FriendsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469791ED7402900F13B27 /* FriendsCollectionView.swift */; };
 		7A7469801ED7581600F13B27 /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A74697F1ED7581600F13B27 /* FriendsCell.xib */; };
 		7A7469821ED75B5600F13B27 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469811ED75B5600F13B27 /* FriendsCell.swift */; };
 		7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469831ED760AD00F13B27 /* FriendsCollectionViewCell.swift */; };
 		7A7469861ED7610100F13B27 /* FriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7469851ED7610100F13B27 /* FriendsCollectionViewCell.xib */; };
+		7AC918361ED8313B0064BCF2 /* MenuTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC918351ED8313B0064BCF2 /* MenuTableView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A1C21321ED8448A00D80EDE /* CameraPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		7A1C21341ED8449B00D80EDE /* CameraPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraPreview.xib; sourceTree = "<group>"; };
+		7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsCell.swift; sourceTree = "<group>"; };
+		7A1C213B1ED84E3400D80EDE /* InvitationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitationsCell.xib; sourceTree = "<group>"; };
 		7A4D92CB1ED36A7C0082863D /* camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A4D92D01ED36A7C0082863D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,12 +62,13 @@
 		7A4D92EA1ED36A7D0082863D /* cameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraUITests.swift; sourceTree = "<group>"; };
 		7A4D92F01ED36A7D0082863D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A7469761ED6CDE000F13B27 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		7A7469761ED6CDE000F13B27 /* MenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
 		7A7469791ED7402900F13B27 /* FriendsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionView.swift; sourceTree = "<group>"; };
 		7A74697F1ED7581600F13B27 /* FriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCell.xib; sourceTree = "<group>"; };
 		7A7469811ED75B5600F13B27 /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		7A7469831ED760AD00F13B27 /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A7469851ED7610100F13B27 /* FriendsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		7AC918351ED8313B0064BCF2 /* MenuTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A1C21361ED84D4200D80EDE /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				7A1C21321ED8448A00D80EDE /* CameraPreview.swift */,
+				7A1C21341ED8449B00D80EDE /* CameraPreview.xib */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		7A1C21371ED84DC100D80EDE /* Invitations */ = {
+			isa = PBXGroup;
+			children = (
+				7A1C21381ED84E0800D80EDE /* Invitations cell */,
+			);
+			name = Invitations;
+			sourceTree = "<group>";
+		};
+		7A1C21381ED84E0800D80EDE /* Invitations cell */ = {
+			isa = PBXGroup;
+			children = (
+				7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */,
+				7A1C213B1ED84E3400D80EDE /* InvitationsCell.xib */,
+			);
+			name = "Invitations cell";
+			sourceTree = "<group>";
+		};
 		7A4D92C21ED36A7C0082863D = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +147,7 @@
 			children = (
 				7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */,
 				7A4D92D01ED36A7C0082863D /* ViewController.swift */,
+				7A1C21361ED84D4200D80EDE /* Camera */,
 				7A7469781ED7400A00F13B27 /* Menu */,
 				7A4D92D21ED36A7C0082863D /* Main.storyboard */,
 				7A4D92D51ED36A7C0082863D /* Assets.xcassets */,
@@ -141,7 +178,9 @@
 		7A7469781ED7400A00F13B27 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				7A7469761ED6CDE000F13B27 /* MenuView.swift */,
+				7A7469761ED6CDE000F13B27 /* MenuTableView.swift */,
+				7AC918351ED8313B0064BCF2 /* MenuTableView.xib */,
+				7A1C21371ED84DC100D80EDE /* Invitations */,
 				7A7469871ED769F600F13B27 /* Friends list */,
 			);
 			name = Menu;
@@ -294,7 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A7469861ED7610100F13B27 /* FriendsCollectionViewCell.xib in Resources */,
+				7A1C21351ED8449B00D80EDE /* CameraPreview.xib in Resources */,
+				7AC918361ED8313B0064BCF2 /* MenuTableView.xib in Resources */,
 				7A7469801ED7581600F13B27 /* FriendsCell.xib in Resources */,
+				7A1C213C1ED84E3400D80EDE /* InvitationsCell.xib in Resources */,
 				7A4D92D91ED36A7C0082863D /* LaunchScreen.storyboard in Resources */,
 				7A4D92D61ED36A7C0082863D /* Assets.xcassets in Resources */,
 				7A4D92D41ED36A7C0082863D /* Main.storyboard in Resources */,
@@ -322,10 +364,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A1C213A1ED84E2800D80EDE /* InvitationsCell.swift in Sources */,
 				7A74697A1ED7402900F13B27 /* FriendsCollectionView.swift in Sources */,
 				7A7469821ED75B5600F13B27 /* FriendsCell.swift in Sources */,
 				7A4D92D11ED36A7C0082863D /* ViewController.swift in Sources */,
-				7A7469771ED6CDE000F13B27 /* MenuView.swift in Sources */,
+				7A1C21331ED8448A00D80EDE /* CameraPreview.swift in Sources */,
+				7A7469771ED6CDE000F13B27 /* MenuTableView.swift in Sources */,
 				7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */,
 				7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,19 +21,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6vY-et-0nC" customClass="MenuView" customModule="camera" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85N-Ue-WT6" customClass="CameraPreview" customModule="camera" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pRc-a9-aJU" customClass="MenuTableView" customModule="camera" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="EdE-Cm-eLL"/>
+                                    <constraint firstAttribute="height" constant="120" id="Myh-4f-qL9"/>
                                 </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6vY-et-0nC" secondAttribute="bottom" id="g7q-3v-SkP"/>
-                            <constraint firstAttribute="trailing" secondItem="6vY-et-0nC" secondAttribute="trailing" id="rIi-l4-Luy"/>
-                            <constraint firstItem="6vY-et-0nC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="teL-36-0bU"/>
+                            <constraint firstItem="85N-Ue-WT6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0WR-oy-N3d"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="85N-Ue-WT6" secondAttribute="bottom" id="7y7-6O-oBt"/>
+                            <constraint firstItem="pRc-a9-aJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="N5E-iZ-kKX"/>
+                            <constraint firstItem="85N-Ue-WT6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XMd-mf-P82"/>
+                            <constraint firstAttribute="trailing" secondItem="85N-Ue-WT6" secondAttribute="trailing" id="afj-iE-f8u"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pRc-a9-aJU" secondAttribute="bottom" id="sjJ-LO-UzS"/>
+                            <constraint firstAttribute="trailing" secondItem="pRc-a9-aJU" secondAttribute="trailing" id="uAL-xC-aCb"/>
                         </constraints>
                     </view>
                 </viewController>
