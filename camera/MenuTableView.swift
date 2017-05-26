@@ -22,17 +22,21 @@ class MenuTableView: UITableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+        setupNotifications()
+        setupGesture()
 
         print("Menu table view awake")
-
-        self.addBlurEffect(style: .dark, alpha: 1.0)
-
     }
+
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)    }
 
     /**
      Setup view method.
      */
     func setupView() {
+        self.addBlurEffect(style: .dark, alpha: 1.0)
         self.dataSource = self
         self.delegate = self
         self.register(UINib(nibName: "FriendsCell", bundle: nil), forCellReuseIdentifier: "FriendsCell")
@@ -45,6 +49,85 @@ class MenuTableView: UITableView {
 
             scrollView.delegate = self
         }
+    }
+
+    /**
+     Setup gesture.
+     */
+    func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.activeEndEditing))
+        self.superview!.addGestureRecognizer(tapGesture)
+    }
+
+    /**
+     Call end editing to hide the keyboard.
+     */
+    func activeEndEditing() {
+        self.endEditing(true)
+    }
+
+    /**
+     Keyboard will show notification.
+     */
+    func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardFrame = self.getKeyboardFrame(from: notification) else {
+            return
+        }
+
+        for constraint in self.superview!.constraints {
+            guard constraint.firstAttribute == .bottom else {
+                continue
+            }
+
+            self.animate(from: constraint, to: -keyboardFrame.height)
+        }
+    }
+
+    /**
+     Keyboard will hide notification.
+     */
+    func keyboardWillHide(notification: NSNotification) {
+        guard let keyboardFrame = self.getKeyboardFrame(from: notification) else {
+            return
+        }
+
+        for constraint in self.superview!.constraints {
+            guard constraint.firstAttribute == .bottom else {
+                continue
+            }
+
+            self.animate(from: constraint, to: +keyboardFrame.height)
+        }
+    }
+
+    /**
+     Animate a constraint.
+     - parameter constraint: A constrain (NSLayoutConstraint).
+     - parameter value: The new constraint value (CGFloat).
+     */
+    func animate(from constraint: NSLayoutConstraint, to value: CGFloat) {
+        constraint.constant += value
+        UIView.animate(withDuration: 0.6, animations: {
+            self.superview?.layoutIfNeeded()
+        })
+    }
+
+    /**
+     Get keyboard frame.
+     - parameter notification: A keyboard notification (NSNotification).
+
+     - returns: The keyboard frame (CGRect?).
+     */
+    func getKeyboardFrame(from notification: NSNotification) -> CGRect? {
+        guard let keyboardSize = (notification.userInfo?[
+            UIKeyboardFrameBeginUserInfoKey
+            ] as? NSValue
+            )?.cgRectValue
+            else {
+                return nil
+        }
+
+        return keyboardSize
     }
 
     /**
