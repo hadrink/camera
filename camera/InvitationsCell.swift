@@ -11,10 +11,22 @@ import UIKit
 
 class InvitationsCell: UITableViewCell {
 
+    @IBOutlet weak var friendSearchBar: UISearchBar!
+
+    var delegate: MenuTableViewDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
 
         print("Invatation cell awake")
+
+        friendSearchBar.delegate = self
+    }
+}
+
+extension InvitationsCell: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        delegate?.menuTableView(didBeginEditing: searchBar as! UITextInput)
     }
 }

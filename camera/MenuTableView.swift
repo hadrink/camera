@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol MenuTableViewDelegate {
+    func menuTableView(didBeginEditing textInput: UITextInput)
+}
+
 /// Menu view.
 class MenuTableView: UITableView {
 
@@ -113,6 +117,13 @@ extension MenuTableView: UITableViewDataSource {
         }
 
         return cell!
+    }
+}
+
+/// Menu TableView Delegate
+extension MenuTableView: MenuTableViewDelegate {
+    func menuTableView(didBeginEditing textInput: UITextInput) {
+        return
     }
 }
 
