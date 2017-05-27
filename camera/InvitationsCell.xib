@@ -19,32 +19,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3He-Uv-g1c">
-                        <rect key="frame" x="10" y="10" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add friends 😎 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3He-Uv-g1c">
+                        <rect key="frame" x="127" y="10" width="121" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="5Lu-33-9fz">
-                        <rect key="frame" x="4" y="63.5" width="310" height="44"/>
+                        <rect key="frame" x="4" y="63.5" width="334" height="44"/>
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrX-50-vXY">
-                        <rect key="frame" x="319" y="70.5" width="46" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="BAx-65-o3s"/>
-                            <constraint firstAttribute="width" constant="46" id="eII-4b-I9w"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrX-50-vXY">
+                        <rect key="frame" x="343" y="74.5" width="22" height="22"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="3He-Uv-g1c" firstAttribute="centerX" secondItem="uKW-Q4-TcM" secondAttribute="centerX" id="24h-bG-kgX"/>
                     <constraint firstItem="lrX-50-vXY" firstAttribute="centerY" secondItem="5Lu-33-9fz" secondAttribute="centerY" id="Hfz-Ww-xpn"/>
                     <constraint firstItem="5Lu-33-9fz" firstAttribute="leading" secondItem="uKW-Q4-TcM" secondAttribute="leading" constant="4" id="KF2-gs-rXA"/>
                     <constraint firstAttribute="trailing" secondItem="lrX-50-vXY" secondAttribute="trailing" constant="10" id="OPg-Qe-oc0"/>
                     <constraint firstItem="lrX-50-vXY" firstAttribute="leading" secondItem="5Lu-33-9fz" secondAttribute="trailing" constant="5" id="exY-YS-epq"/>
                     <constraint firstItem="3He-Uv-g1c" firstAttribute="top" secondItem="uKW-Q4-TcM" secondAttribute="top" constant="10" id="gaz-WT-Vt8"/>
-                    <constraint firstItem="3He-Uv-g1c" firstAttribute="leading" secondItem="uKW-Q4-TcM" secondAttribute="leading" constant="10" id="isn-RR-Sl5"/>
                     <constraint firstAttribute="bottomMargin" secondItem="5Lu-33-9fz" secondAttribute="bottom" constant="4" id="tB2-xe-HHn"/>
                 </constraints>
             </tableViewCellContentView>

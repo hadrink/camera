@@ -11,7 +11,7 @@ import UIKit
 
 /// Friends collection view cell.
 class FriendsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var profilePictureView: UIImageView!
+    @IBOutlet weak var profilePictureView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

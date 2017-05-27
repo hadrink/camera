@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,15 +12,39 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendsCollectionViewCell" id="mVI-0c-Bke" customClass="FriendsCollectionViewCell" customModule="camera" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-Jt-KPu">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="h9K-fR-oIU"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5s-dI-STi">
+                        <rect key="frame" x="26.5" y="106.5" width="28.5" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
             </view>
-            <color key="backgroundColor" red="0.58527112010000004" green="0.037924686389999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <size key="customSize" width="103" height="97"/>
-            <point key="canvasLocation" x="87.5" y="58.5"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bFw-Jt-KPu" secondAttribute="trailing" id="78w-4I-RNy"/>
+                <constraint firstItem="bFw-Jt-KPu" firstAttribute="leading" secondItem="mVI-0c-Bke" secondAttribute="leading" id="V2P-Jx-U7b"/>
+                <constraint firstItem="A5s-dI-STi" firstAttribute="centerX" secondItem="mVI-0c-Bke" secondAttribute="centerX" id="eNF-Zq-Y8A"/>
+                <constraint firstItem="bFw-Jt-KPu" firstAttribute="top" secondItem="mVI-0c-Bke" secondAttribute="top" id="fIK-Tv-FCQ"/>
+                <constraint firstAttribute="bottom" secondItem="A5s-dI-STi" secondAttribute="bottom" id="wQf-E9-kZX"/>
+            </constraints>
+            <size key="customSize" width="87" height="117"/>
+            <connections>
+                <outlet property="profilePictureView" destination="bFw-Jt-KPu" id="FLW-2N-KLF"/>
+            </connections>
+            <point key="canvasLocation" x="79" y="48"/>
         </collectionViewCell>
     </objects>
 </document>
