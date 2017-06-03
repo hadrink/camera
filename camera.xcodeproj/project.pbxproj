@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0A041B1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A041A1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift */; };
+		7A0A041D1EE3424900B5E0E7 /* VideoSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A041C1EE3424900B5E0E7 /* VideoSession.swift */; };
+		7A0A041F1EE34CDB00B5E0E7 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A041E1EE34CDB00B5E0E7 /* Device.swift */; };
 		7A1C21331ED8448A00D80EDE /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C21321ED8448A00D80EDE /* CameraPreview.swift */; };
 		7A1C21351ED8449B00D80EDE /* CameraPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1C21341ED8449B00D80EDE /* CameraPreview.xib */; };
 		7A1C213A1ED84E2800D80EDE /* InvitationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A0A041A1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPreviewLayer.swift; sourceTree = "<group>"; };
+		7A0A041C1EE3424900B5E0E7 /* VideoSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoSession.swift; sourceTree = "<group>"; };
+		7A0A041E1EE34CDB00B5E0E7 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7A1C21321ED8448A00D80EDE /* CameraPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		7A1C21341ED8449B00D80EDE /* CameraPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraPreview.xib; sourceTree = "<group>"; };
 		7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsCell.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				7A1C21321ED8448A00D80EDE /* CameraPreview.swift */,
+				7A0A041A1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift */,
+				7A0A041C1EE3424900B5E0E7 /* VideoSession.swift */,
+				7A0A041E1EE34CDB00B5E0E7 /* Device.swift */,
 				7A1C21341ED8449B00D80EDE /* CameraPreview.xib */,
 			);
 			name = Camera;
@@ -364,6 +373,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0A041F1EE34CDB00B5E0E7 /* Device.swift in Sources */,
+				7A0A041D1EE3424900B5E0E7 /* VideoSession.swift in Sources */,
 				7A1C213A1ED84E2800D80EDE /* InvitationsCell.swift in Sources */,
 				7A74697A1ED7402900F13B27 /* FriendsCollectionView.swift in Sources */,
 				7A7469821ED75B5600F13B27 /* FriendsCell.swift in Sources */,
@@ -371,6 +382,7 @@
 				7A1C21331ED8448A00D80EDE /* CameraPreview.swift in Sources */,
 				7A7469771ED6CDE000F13B27 /* MenuTableView.swift in Sources */,
 				7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */,
+				7A0A041B1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift in Sources */,
 				7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

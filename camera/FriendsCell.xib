@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAX-aX-9qH" id="JpR-vC-Sz9">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SeR-RJ-vD2">
