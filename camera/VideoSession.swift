@@ -10,15 +10,33 @@ import Foundation
 import AVFoundation
 import UIKit
 
+/// Video Session.
 class VideoSession: AVCaptureSession {
 
+    /**
+     Audio device.
+     */
     var audioDevice: AVCaptureDevice?
 
+    /**
+     Video device.
+     */
     var videoDevice: AVCaptureDevice
 
+    /**
+     Video preset.
+     */
     var preset: String
 
-    init(audioDevice: AVCaptureDevice?, videoDevice: AVCaptureDevice, preset: String = AVCaptureSessionPresetMedium) {
+    /**
+     Initialize a video session.
+     - parameter audioDevice: The audio device (AVCaptureDevice).
+     - parameter videoDevice: The video device required (AVCaptureDevice).
+     - parameter preset: The video quality (String).
+     */
+    init(audioDevice: AVCaptureDevice?,
+         videoDevice: AVCaptureDevice,
+         preset: String = AVCaptureSessionPresetMedium) {
         self.audioDevice = audioDevice
         self.videoDevice = videoDevice
         self.preset = preset
@@ -26,23 +44,19 @@ class VideoSession: AVCaptureSession {
         self.createSession()
     }
 
-
-    var connection: AVCaptureConnection?
-    var sessionQueue: DispatchQueue?
-
-
+    /**
+     Create session for self.
+     */
     private func createSession() {
-
         self.sessionPreset = self.preset
-
         addVideoInput()
         addAudioInput()
-
-        //addVideoOutput()
-        //addAudioOutput()
     }
 
-    func addVideoInput() {
+    /**
+     Add a video input from a video device.
+     */
+    private func addVideoInput() {
         do {
             let inputVideo = try AVCaptureDeviceInput(device: videoDevice)
             self.addInput(inputVideo)
@@ -51,7 +65,10 @@ class VideoSession: AVCaptureSession {
         }
     }
 
-    func addAudioInput() {
+    /**
+     Add an audio input from an audio device.
+     */
+    private func addAudioInput() {
         do {
             let inputAudio = try AVCaptureDeviceInput(device: audioDevice)
             self.addInput(inputAudio)
@@ -60,30 +77,45 @@ class VideoSession: AVCaptureSession {
         }
     }
 
-    func addVideoOutput() {
+    /**
+     Get the video output.
+     */
+    lazy var videoOutput: AVCaptureVideoDataOutput? = {
         let outputVideo = AVCaptureVideoDataOutput()
         outputVideo.alwaysDiscardsLateVideoFrames = true
-
-        let compressionSettings = [ AVVideoProfileLevelKey: AVVideoProfileLevelH264Main41, AVVideoAverageBitRateKey : 24*(1024.0*1024.0)] as [String : Any]
-
-        let videoSettings = [kCVPixelBufferPixelFormatTypeKey as NSString:Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange), AVVideoCodecKey : AVVideoCodecH264, AVVideoCompressionPropertiesKey: compressionSettings, AVVideoWidthKey : 480,  AVVideoHeightKey : 640 ] as [AnyHashable : Any]
+        let compressionSettings = [
+            AVVideoProfileLevelKey: AVVideoProfileLevelH264Main41,
+            AVVideoAverageBitRateKey : 24*(1024.0*1024.0)] as [String : Any
+        ]
+        let videoSettings = [
+            kCVPixelBufferPixelFormatTypeKey as NSString:Int(kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange),
+            AVVideoCodecKey: AVVideoCodecH264,
+            AVVideoCompressionPropertiesKey: compressionSettings,
+            AVVideoWidthKey: 480,
+            AVVideoHeightKey: 640 ] as [AnyHashable : Any]
 
         outputVideo.videoSettings = videoSettings
 
-        if self.canAddOutput(outputVideo) {
-            self.addOutput(outputVideo)
+        guard self.canAddOutput(outputVideo) else {
+            return nil
         }
-    }
 
+        self.addOutput(outputVideo)
+        return outputVideo
+    }()
 
-    func addAudioOutput() {
+    /**
+     Get the audio output.
+     */
+    lazy var audioOutput: AVCaptureAudioDataOutput? = {
         let outputAudio = AVCaptureAudioDataOutput()
-
-        if self.canAddOutput(outputAudio) {
-            self.addOutput(outputAudio)
+        guard self.canAddOutput(outputAudio) else {
+            return nil
         }
-    }
 
+        self.addOutput(outputAudio)
+        return outputAudio
+    }()
 
     func startSession() {
         self.startRunning()

@@ -26,8 +26,7 @@ class VideoPreviewLayer: AVCaptureVideoPreviewLayer {
      - parameter size: Size for preview layer (CGSize).
      - parameter session: An AVCaptureSession is mandatory (AVCaptureSession).
      */
-    private func create(from size: CGSize,
-                              session: AVCaptureSession){
+    private func create(from size: CGSize, session: AVCaptureSession){
         self.frame.size = size
         self.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.connection.videoOrientation = .portrait
