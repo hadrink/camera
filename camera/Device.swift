@@ -9,13 +9,24 @@
 import Foundation
 import AVFoundation
 
-class Device {
+/// Device object.
+struct Device {
 
+    /**
+     Get audio.
+     */
     static var audio: AVCaptureDevice {
         return  AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
     }
 
+    /**
+     Get video.
+     */
     static var video: AVCaptureDevice {
-        return  AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        return AVCaptureDevice.defaultDevice(
+            withDeviceType: .builtInWideAngleCamera,
+            mediaType: AVMediaTypeVideo,
+            position: .front
+        )
     }
 }
