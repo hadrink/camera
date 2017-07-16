@@ -43,9 +43,5 @@ extension CameraPreview: AVCaptureVideoDataOutputSampleBufferDelegate {
                        didOutputSampleBuffer sampleBuffer: CMSampleBuffer!,
                        from connection: AVCaptureConnection!) {
 
-//        var assetWriterImput = AVAssetWriterInput(mediaType: "", outputSettings: [:])
-//        assetWriterImput.append(sampleBuffer)
-//        var writer = AVAssetWriter(outputURL: URL(string: "")!, fileType: "MP4")
-
     }
 }
