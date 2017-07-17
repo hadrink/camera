@@ -10,63 +10,71 @@ import Foundation
 import AVKit
 import AVFoundation
 
-struct VideoManager {
+/// Video Manager.
+class VideoManager: NSObject {
 
-    var startDate: Date?
+    var maxTime: TimeInterval = 10
 
-    var endDate: Date?
-
-    var maxTime: Int = 10
+    var timer: Timer?
 
     var isCapturing: Bool = false
 
-    private var assetWriterInput = AVAssetWriterInput(mediaType: "", outputSettings: [:])
+    //private var assetWriterInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: [:])
 
-    private var writer = try? AVAssetWriter(outputURL: URL(string: "")!, fileType: "MP4")
+    //private var writer = try? AVAssetWriter(outputURL: URL(string: UUID().uuidString)!, fileType: "mp4")
 
     /**
      Save the video.
      */
     func save() {
-        writer?.add(assetWriterInput)
+        //writer?.add(assetWriterInput)
     }
 
     /**
-     Capture a video buffer
+     Capture a video buffer.
      */
-    mutating func capture(buffer: CMSampleBuffer) {
-        guard !captureNeedToStop else {
+    func capture(buffer: CMSampleBuffer) {
+        guard let timer = self.timer, timer.isValid else {
             self.captureStopped()
             return
         }
 
         self.captureStarted()
-        assetWriterInput.append(buffer)
+        //assetWriterInput.append(buffer)
     }
 
-    mutating func captureStarted() {
+    /**
+     Active capture.
+     */
+    func captureStarted() {
         guard !self.isCapturing else {
             return
         }
 
-        self.startDate = Date()
-        let calendar = Calendar.current
-        self.endDate = calendar.date(byAdding: .second, value: maxTime, to: startDate!)
+        self.stopCatptureIn(interval: maxTime)
         self.isCapturing = true
     }
 
-    mutating func captureStopped() {
-        self.startDate = nil
-        self.endDate = nil
+    /**
+     Stop capture.
+     */
+    func captureStopped() {
+        self.timer?.invalidate()
+        self.timer = nil
         self.save()
         self.isCapturing = false
     }
 
-    var captureNeedToStop: Bool {
-        guard let endDate = self.endDate, Date() > endDate else {
-            return false
-        }
-
-        return true
+    /**
+     Set timer to stop capture.
+     */
+    func stopCatptureIn(interval: TimeInterval) {
+        self.timer = Timer.scheduledTimer(
+            timeInterval: interval,
+            target: self,
+            selector: #selector(self.captureStopped),
+            userInfo: nil,
+            repeats: false
+        )
     }
 }
