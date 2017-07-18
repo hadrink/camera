@@ -15,7 +15,7 @@
 		7A1C21351ED8449B00D80EDE /* CameraPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1C21341ED8449B00D80EDE /* CameraPreview.xib */; };
 		7A1C213A1ED84E2800D80EDE /* InvitationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */; };
 		7A1C213C1ED84E3400D80EDE /* InvitationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A1C213B1ED84E3400D80EDE /* InvitationsCell.xib */; };
-		7A26C5521F1BE32B009153D5 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26C5511F1BE32A009153D5 /* VideoManager.swift */; };
+		7A26C5521F1BE32B009153D5 /* CaptureVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A26C5511F1BE32A009153D5 /* CaptureVideoManager.swift */; };
 		7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */; };
 		7A4D92D11ED36A7C0082863D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92D01ED36A7C0082863D /* ViewController.swift */; };
 		7A4D92D41ED36A7C0082863D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D92D21ED36A7C0082863D /* Main.storyboard */; };
@@ -58,7 +58,7 @@
 		7A1C21341ED8449B00D80EDE /* CameraPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraPreview.xib; sourceTree = "<group>"; };
 		7A1C21391ED84E2800D80EDE /* InvitationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsCell.swift; sourceTree = "<group>"; };
 		7A1C213B1ED84E3400D80EDE /* InvitationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitationsCell.xib; sourceTree = "<group>"; };
-		7A26C5511F1BE32A009153D5 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		7A26C5511F1BE32A009153D5 /* CaptureVideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureVideoManager.swift; sourceTree = "<group>"; };
 		7A4D92CB1ED36A7C0082863D /* camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D92CE1ED36A7C0082863D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A4D92D01ED36A7C0082863D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				7A1C21321ED8448A00D80EDE /* CameraPreview.swift */,
 				7A0A041A1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift */,
 				7A0A041C1EE3424900B5E0E7 /* VideoSession.swift */,
-				7A26C5511F1BE32A009153D5 /* VideoManager.swift */,
+				7A26C5511F1BE32A009153D5 /* CaptureVideoManager.swift */,
 				7A0A041E1EE34CDB00B5E0E7 /* Device.swift */,
 				7A1C21341ED8449B00D80EDE /* CameraPreview.xib */,
 			);
@@ -390,7 +390,7 @@
 				7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */,
 				7A0A041B1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift in Sources */,
 				7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */,
-				7A26C5521F1BE32B009153D5 /* VideoManager.swift in Sources */,
+				7A26C5521F1BE32B009153D5 /* CaptureVideoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,8 +31,8 @@ class VideoManagerTests: XCTestCase {
     /**
      Test if capture is started.
      */
-    func testCaptureStarted() {
-        self.videoManager.captureStarted()
+    func testStartCapture() {
+        self.videoManager.startCapture()
         let isCapturing = self.videoManager.isCapturing
         XCTAssert(isCapturing, "Video is capturing.")
     }
@@ -40,28 +40,11 @@ class VideoManagerTests: XCTestCase {
     /**
      Test if capture is stopped.
      */
-    func testCaptureStopped() {
-        self.videoManager.captureStarted()
+    func testStopCapture() {
+        self.videoManager.startCapture()
         XCTAssert(self.videoManager.isCapturing, "Video is capturing.")
-        self.videoManager.captureStopped()
+        self.videoManager.stopCapture()
         XCTAssertFalse(self.videoManager.isCapturing, "Video is stopped.")
-    }
-
-    /**
-     Test if timer is started.
-     */
-    func testCaptureStartedAndTimerStarted() {
-        self.videoManager.captureStarted()
-        XCTAssertNotNil(self.videoManager.timer)
-    }
-
-    /**
-     Test if capture is stopped after timer is done.
-     */
-    func testCaptureStopWhenTimerIsDone() {
-        self.videoManager.captureStarted()
-        XCTAssertNotNil(self.videoManager.timer)
-        self.waitForTimer()
     }
 
     func waitForTimer() {
