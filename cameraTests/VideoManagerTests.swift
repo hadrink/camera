@@ -8,11 +8,12 @@
 
 import Foundation
 import XCTest
+import AVFoundation
 @testable import camera
 
 class VideoManagerTests: XCTestCase {
 
-    var videoManager: VideoManager = VideoManager()
+    var videoManager = CaptureVideoManager()
 
     var waitTimerIsCapturingExpectation: XCTestExpectation?
 
@@ -31,8 +32,8 @@ class VideoManagerTests: XCTestCase {
     /**
      Test if capture is started.
      */
-    func testStartCapture() {
-        self.videoManager.startCapture()
+    func testCapture() {
+        self.videoManager.capture(buffer: nil)
         let isCapturing = self.videoManager.isCapturing
         XCTAssert(isCapturing, "Video is capturing.")
     }
@@ -41,10 +42,18 @@ class VideoManagerTests: XCTestCase {
      Test if capture is stopped.
      */
     func testStopCapture() {
-        self.videoManager.startCapture()
+        self.videoManager.capture(buffer: nil)
         XCTAssert(self.videoManager.isCapturing, "Video is capturing.")
         self.videoManager.stopCapture()
         XCTAssertFalse(self.videoManager.isCapturing, "Video is stopped.")
+    }
+
+    /**
+     Test if capture is stopped after timer is done.
+     */
+    func testCaptureStopWhenTimerIsDone() {
+        self.videoManager.capture(buffer: nil)
+        self.waitForTimer()
     }
 
     func waitForTimer() {
@@ -77,12 +86,5 @@ class VideoManagerTests: XCTestCase {
     func timerIsNotCapturing() {
         waitTimerIsNotCapturingExpectation?.fulfill()
         XCTAssertFalse(self.videoManager.isCapturing)
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 }

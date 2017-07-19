@@ -47,11 +47,6 @@ class CaptureVideoManager: NSObject {
         ]
     )
 
-    /*private var writer = try? AVAssetWriter(
-        outputURL: URL(string: UUID().uuidString)!,
-        fileType: AVFileTypeMPEG4
-    )*/
-
     /**
      Save the video.
      */
@@ -62,13 +57,9 @@ class CaptureVideoManager: NSObject {
     /**
      Capture a video buffer.
      */
-    func capture(buffer: CMSampleBuffer) {
-        guard let timer = self.timer, timer.isValid else {
-            self.stopCapture()
-            return
-        }
-
+    func capture(buffer: CMSampleBuffer?) {
         self.startCapture()
+        guard let buffer = buffer else { return }
         assetWriterInput.append(buffer)
     }
 
@@ -90,8 +81,8 @@ class CaptureVideoManager: NSObject {
     func stopCapture() {
         self.timer?.invalidate()
         self.timer = nil
-        //self.save()
         self._isCapturing = false
+        SaveVideoManager(assetWriterInput: self.assetWriterInput)
     }
 
     /**
