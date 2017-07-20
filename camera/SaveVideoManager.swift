@@ -13,40 +13,48 @@ import AVFoundation
 class SaveVideoManager {
 
     /**
-     Asset writer input.
+     Writer object.
      */
-    private var assetWriterInput: AVAssetWriterInput
+    private var writer: AVAssetWriter?
 
     /**
-     Get cache directory to save video.
+     Return filename.
      */
-    private var cacheDirectory: URL? {
+    internal var filename: String? {
+        return writer?.outputURL.lastPathComponent
+    }
+
+    /**
+     Return filepath.
+     */
+    internal var filepath: URL? {
+        return writer?.outputURL
+    }
+
+    init(assetWriterInput: AVAssetWriterInput) {
+        self.write(assetWriterInput)
+    }
+
+    /**
+     Write video.
+     */
+    private func write(_ input: AVAssetWriterInput) {
         let cacheUrls = FileManager.default.urls(
             for: .cachesDirectory,
             in: .userDomainMask
         )
 
-        return cacheUrls.first
-    }
-
-    init(assetWriterInput: AVAssetWriterInput) {
-        self.assetWriterInput = assetWriterInput
-        self.save()
-    }
-
-    /**
-     Save video.
-     */
-    private func save() {
-        guard let path = cacheDirectory?.appendingPathComponent(UUID().uuidString + ".mp4") else {
+        let filename = UUID().uuidString + ".mp4"
+        let path = cacheUrls.first
+        guard let filepath = path?.appendingPathComponent(filename) else {
             return
         }
 
-        let writer = try? AVAssetWriter(
-            outputURL: path,
+        self.writer = try? AVAssetWriter(
+            outputURL: filepath,
             fileType: AVFileTypeMPEG4
         )
 
-        writer?.add(self.assetWriterInput)
+        writer?.add(input)
     }
 }

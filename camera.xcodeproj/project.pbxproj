@@ -30,6 +30,7 @@
 		7A7469821ED75B5600F13B27 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469811ED75B5600F13B27 /* FriendsCell.swift */; };
 		7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469831ED760AD00F13B27 /* FriendsCollectionViewCell.swift */; };
 		7A7469861ED7610100F13B27 /* FriendsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A7469851ED7610100F13B27 /* FriendsCollectionViewCell.xib */; };
+		7A8EF9EB1F21298300858EE8 /* SaveVideoManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8EF9EA1F21298300858EE8 /* SaveVideoManagerTests.swift */; };
 		7AC918361ED8313B0064BCF2 /* MenuTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC918351ED8313B0064BCF2 /* MenuTableView.xib */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		7A7469811ED75B5600F13B27 /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		7A7469831ED760AD00F13B27 /* FriendsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A7469851ED7610100F13B27 /* FriendsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCollectionViewCell.xib; sourceTree = "<group>"; };
+		7A8EF9EA1F21298300858EE8 /* SaveVideoManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveVideoManagerTests.swift; sourceTree = "<group>"; };
 		7AC918351ED8313B0064BCF2 /* MenuTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 			children = (
 				7A4D92E31ED36A7D0082863D /* cameraTests.swift */,
 				7A06109D1F1D36DD00C23188 /* VideoManagerTests.swift */,
+				7A8EF9EA1F21298300858EE8 /* SaveVideoManagerTests.swift */,
 				7A4D92E51ED36A7D0082863D /* Info.plist */,
 			);
 			path = cameraTests;
@@ -404,6 +407,7 @@
 			files = (
 				7A4D92E41ED36A7D0082863D /* cameraTests.swift in Sources */,
 				7A06109E1F1D36DD00C23188 /* VideoManagerTests.swift in Sources */,
+				7A8EF9EB1F21298300858EE8 /* SaveVideoManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
