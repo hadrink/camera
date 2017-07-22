@@ -1,5 +1,5 @@
 //
-//  VideoManagerTests.swift
+//  captureVideoManagerTests.swift
 //  camera
 //
 //  Created by Rplay on 17/07/2017.
@@ -11,9 +11,9 @@ import XCTest
 import AVFoundation
 @testable import camera
 
-class VideoManagerTests: XCTestCase {
+class CaptureVideoManagerTests: XCTestCase, CaptureVideoManagerDelegate {
 
-    var videoManager = CaptureVideoManager()
+    var captureVideoManager = CaptureVideoManager()
 
     var waitTimerIsCapturingExpectation: XCTestExpectation?
 
@@ -33,8 +33,8 @@ class VideoManagerTests: XCTestCase {
      Test if capture is started.
      */
     func testCapture() {
-        self.videoManager.capture(buffer: nil)
-        let isCapturing = self.videoManager.isCapturing
+        self.captureVideoManager.capture(buffer: nil)
+        let isCapturing = self.captureVideoManager.isCapturing
         XCTAssert(isCapturing, "Video is capturing.")
     }
 
@@ -42,17 +42,22 @@ class VideoManagerTests: XCTestCase {
      Test if capture is stopped.
      */
     func testStopCapture() {
-        self.videoManager.capture(buffer: nil)
-        XCTAssert(self.videoManager.isCapturing, "Video is capturing.")
-        self.videoManager.stopCapture()
-        XCTAssertFalse(self.videoManager.isCapturing, "Video is stopped.")
+        self.captureVideoManager.capture(buffer: nil)
+        self.captureVideoManager.delegate = self
+        XCTAssert(self.captureVideoManager.isCapturing, "Video is capturing.")
+        self.captureVideoManager.stopCapture()
+        XCTAssertFalse(self.captureVideoManager.isCapturing, "Video is stopped.")
+    }
+
+    func captureVideoManager(didCaptureInput input: AVAssetWriterInput) {
+        XCTAssert(true, "test if method is called when capture is stopped.")
     }
 
     /**
      Test if capture is stopped after timer is done.
      */
     func testCaptureStopWhenTimerIsDone() {
-        self.videoManager.capture(buffer: nil)
+        self.captureVideoManager.capture(buffer: nil)
         self.waitForTimer()
     }
 
@@ -63,7 +68,7 @@ class VideoManagerTests: XCTestCase {
         Timer.scheduledTimer(
             timeInterval: 5,
             target: self,
-            selector: #selector(VideoManagerTests.timerIsCapturing),
+            selector: #selector(self.timerIsCapturing),
             userInfo: nil,
             repeats: false
         )
@@ -71,7 +76,7 @@ class VideoManagerTests: XCTestCase {
         Timer.scheduledTimer(
             timeInterval: 10,
             target: self,
-            selector: #selector(VideoManagerTests.timerIsNotCapturing),
+            selector: #selector(self.timerIsNotCapturing),
             userInfo: nil, repeats: false
         )
 
@@ -80,11 +85,11 @@ class VideoManagerTests: XCTestCase {
 
     func timerIsCapturing() {
         waitTimerIsCapturingExpectation?.fulfill()
-        XCTAssert(self.videoManager.isCapturing)
+        XCTAssert(self.captureVideoManager.isCapturing)
     }
 
     func timerIsNotCapturing() {
         waitTimerIsNotCapturingExpectation?.fulfill()
-        XCTAssertFalse(self.videoManager.isCapturing)
+        XCTAssertFalse(self.captureVideoManager.isCapturing)
     }
 }

@@ -10,8 +10,17 @@ import Foundation
 import AVKit
 import AVFoundation
 
+protocol CaptureVideoManagerDelegate {
+    func captureVideoManager(didCaptureInput input: AVAssetWriterInput)
+}
+
 /// Video Manager.
 class CaptureVideoManager: NSObject {
+
+    /**
+     Capture video manager delegate.
+     */
+    var delegate: CaptureVideoManagerDelegate?
 
     /**
      Check if video is capturing.
@@ -48,13 +57,6 @@ class CaptureVideoManager: NSObject {
     )
 
     /**
-     Save the video.
-     */
-//    func save() {
-//        //writer?.add(assetWriterInput)
-//    }
-
-    /**
      Capture a video buffer.
      */
     func capture(buffer: CMSampleBuffer?) {
@@ -82,7 +84,7 @@ class CaptureVideoManager: NSObject {
         self.timer?.invalidate()
         self.timer = nil
         self._isCapturing = false
-        SaveVideoManager(assetWriterInput: self.assetWriterInput)
+        delegate?.captureVideoManager(didCaptureInput: self.assetWriterInput)
     }
 
     /**
