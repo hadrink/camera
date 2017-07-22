@@ -9,8 +9,17 @@
 import Foundation
 import AVFoundation
 
+protocol SaveVideoManagerDelegate {
+    func saveVideoManager(didSaveVideoAt filepath: URL)
+}
+
 /// Save video manager.
 class SaveVideoManager {
+
+    /**
+     Save video manager delegate.
+     */
+    internal var delegate: SaveVideoManagerDelegate?
 
     /**
      Writer object.
@@ -31,14 +40,10 @@ class SaveVideoManager {
         return writer?.outputURL
     }
 
-    init(assetWriterInput: AVAssetWriterInput) {
-        self.write(assetWriterInput)
-    }
-
     /**
      Write video.
      */
-    private func write(_ input: AVAssetWriterInput) {
+    func write(input: AVAssetWriterInput) {
         let cacheUrls = FileManager.default.urls(
             for: .cachesDirectory,
             in: .userDomainMask
@@ -56,5 +61,10 @@ class SaveVideoManager {
         )
 
         writer?.add(input)
+        writer?.startWriting()
+        writer?.finishWriting(completionHandler: {
+            guard let filepath = self.filepath else { return }
+            self.delegate?.saveVideoManager(didSaveVideoAt: filepath)
+        })
     }
 }

@@ -11,7 +11,9 @@ import XCTest
 import AVFoundation
 @testable import camera
 
-class SaveVideoManagerTests: XCTestCase {
+class SaveVideoManagerTests: XCTestCase, SaveVideoManagerDelegate {
+
+    let saveVideoManager = SaveVideoManager()
 
     override func setUp() {
         super.setUp()
@@ -33,7 +35,12 @@ class SaveVideoManagerTests: XCTestCase {
             ]
         )
 
-        let saveVideoManager = SaveVideoManager(assetWriterInput: assetWriterInput)
+        saveVideoManager.delegate = self
+        saveVideoManager.write(input: assetWriterInput)
         XCTAssertEqual(saveVideoManager.filename, saveVideoManager.filepath?.lastPathComponent)
+    }
+
+    func saveVideoManager(didSaveVideoAt filepath: URL) {
+        XCTAssertEqual(filepath, saveVideoManager.filepath)
     }
 }
