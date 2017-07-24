@@ -37,7 +37,7 @@ class CaptureVideoManager: NSObject {
     /**
      Record max duration.
      */
-    private var maxDuration: TimeInterval = 10
+    private var maxDuration: TimeInterval = CaptureVideoConfig.maxDuration
 
     /**
      Timer to save the record at max duration.
@@ -56,25 +56,50 @@ class CaptureVideoManager: NSObject {
         ]
     )
 
+    private var saveVideoManager = SaveVideoManager()
+
     /**
      Capture a video buffer.
      */
     func capture(buffer: CMSampleBuffer?) {
-        self.startCapture()
-        guard let buffer = buffer else { return }
+        let startTime = CMSampleBufferGetPresentationTimeStamp(buffer!)
+        self.startCapture(startTime: startTime)
+        guard let buffer = buffer,
+              CMSampleBufferDataIsReady(buffer),
+              assetWriterInput.isReadyForMoreMediaData else {
+            return
+        }
+
         assetWriterInput.append(buffer)
     }
 
     /**
      Active capture.
      */
-    private func startCapture() {
-        guard !self.isCapturing else {
+    private func startCapture(startTime: CMTime) {
+        guard !self._isCapturing else {
             return
         }
 
-        self.stopCatptureIn(maxDuration)
+        assetWriterInput.expectsMediaDataInRealTime = true
+        saveVideoManager.write(input: assetWriterInput, startTime: startTime)
+        DispatchQueue.main.async {
+            self.stopCatptureIn(self.maxDuration)
+        }
         self._isCapturing = true
+    }
+
+    /**
+     Set timer to stop capture.
+     */
+    func stopCatptureIn(_ duration: TimeInterval) {
+        self.timer = Timer.scheduledTimer(
+            timeInterval: duration,
+            target: self,
+            selector: #selector(self.stopCapture),
+            userInfo: nil,
+            repeats: false
+        )
     }
 
     /**
@@ -84,19 +109,8 @@ class CaptureVideoManager: NSObject {
         self.timer?.invalidate()
         self.timer = nil
         self._isCapturing = false
-        delegate?.captureVideoManager(didCaptureInput: self.assetWriterInput)
-    }
-
-    /**
-     Set timer to stop capture.
-     */
-    private func stopCatptureIn(_ duration: TimeInterval) {
-        self.timer = Timer.scheduledTimer(
-            timeInterval: duration,
-            target: self,
-            selector: #selector(self.stopCapture),
-            userInfo: nil,
-            repeats: false
-        )
+        let stopNotification = Notification(name: Notification.Name(rawValue: "stop_capture"))
+        NotificationCenter.default.post(stopNotification)
+        assetWriterInput.markAsFinished()
     }
 }

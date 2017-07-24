@@ -24,7 +24,6 @@ class MenuTableView: UITableView {
         setupView()
         setupNotifications()
         setupGesture()
-
         print("Menu table view awake")
     }
 
@@ -56,7 +55,7 @@ class MenuTableView: UITableView {
      */
     func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.activeEndEditing))
-        self.superview!.addGestureRecognizer(tapGesture)
+        //self.superview!.addGestureRecognizer(tapGesture)
     }
 
     /**

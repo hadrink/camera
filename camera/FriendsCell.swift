@@ -12,10 +12,62 @@ import UIKit
 /// Friends cell.
 class FriendsCell: UITableViewCell {
 
+    /**
+     Friends collection view.
+     */
+    @IBOutlet weak var friendsCollectionView: FriendsCollectionView!
+
+    /**
+     Progress capture bar.
+     */
+    @IBOutlet weak var progressCaptureBar: UIProgressView!
+
+    /**
+     Maximum progress duration.
+     */
+    var maxDuration = Float(CaptureVideoConfig.maxDuration)
+
+    /**
+     Current duration.
+     */
+    var duration: Float = 0
+
+    /**
+     Progress timer.
+     */
+    var timer: Timer?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
+        self.progressCaptureBar.progress = 0
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleProgressCaptureBar(notification:)), name: Notification.Name("capture"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resetProgressBar(notification:)), name: Notification.Name("stop_capture"), object: nil)
+
 
         print("Friends cell awake")
+    }
+
+    /**
+     Manage progress bar.
+     */
+    func handleProgressCaptureBar(notification: Notification) {
+         self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateProgressbar), userInfo: nil, repeats: true)
+    }
+
+    /**
+     Update progress bar depending on timer.
+     */
+    func updateProgressbar() {
+        duration += 0.001
+        print(duration)
+        self.progressCaptureBar.progress = duration
+    }
+
+    func resetProgressBar(notification: Notification) {
+        self.timer?.invalidate()
+        self.timer = nil
+        self.progressCaptureBar.progress = 0
     }
 }

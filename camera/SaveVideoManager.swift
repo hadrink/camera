@@ -43,7 +43,7 @@ class SaveVideoManager {
     /**
      Write video.
      */
-    func write(input: AVAssetWriterInput) {
+    func write(input: AVAssetWriterInput, startTime: CMTime) {
         let cacheUrls = FileManager.default.urls(
             for: .cachesDirectory,
             in: .userDomainMask
@@ -62,9 +62,10 @@ class SaveVideoManager {
 
         writer?.add(input)
         writer?.startWriting()
-        writer?.finishWriting(completionHandler: {
-            guard let filepath = self.filepath else { return }
-            self.delegate?.saveVideoManager(didSaveVideoAt: filepath)
-        })
+        writer?.startSession(atSourceTime: startTime)
+//        writer?.finishWriting(completionHandler: {
+//            guard let filepath = self.filepath else { return }
+//            self.delegate?.saveVideoManager(didSaveVideoAt: filepath)
+//        })
     }
 }
