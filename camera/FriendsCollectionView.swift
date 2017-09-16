@@ -75,7 +75,7 @@ extension FriendsCollectionView: UICollectionViewDelegate {
      */
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let captureNotification = Notification(name: Notification.Name(rawValue: "capture"))
+        let captureNotification = Notification(name: Notification.Name(rawValue: "start_capture_request"))
         NotificationCenter.default.post(captureNotification)
     }
 }

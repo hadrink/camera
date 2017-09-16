@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import Photos
 
 protocol SaveVideoManagerDelegate {
     func saveVideoManager(didSaveVideoAt filepath: URL)
@@ -63,9 +64,22 @@ class SaveVideoManager {
         writer?.add(input)
         writer?.startWriting()
         writer?.startSession(atSourceTime: startTime)
-//        writer?.finishWriting(completionHandler: {
-//            guard let filepath = self.filepath else { return }
-//            self.delegate?.saveVideoManager(didSaveVideoAt: filepath)
-//        })
+    }
+
+    // TODO: Need to pass endtime to set an endSession
+    func finishWriting(endTime: CMTime) {
+        writer?.endSession(atSourceTime: endTime)
+        writer?.finishWriting(completionHandler: {
+            guard let filepath = self.filepath else { return }
+            self.delegate?.saveVideoManager(didSaveVideoAt: filepath)
+
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: filepath)
+            }) { saved, error in
+                if saved {
+                    print("video saved")
+                }
+            }
+        })
     }
 }

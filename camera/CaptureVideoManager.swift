@@ -14,8 +14,21 @@ protocol CaptureVideoManagerDelegate {
     func captureVideoManager(didCaptureInput input: AVAssetWriterInput)
 }
 
+struct WriterInput {
+    static func generate() -> AVAssetWriterInput {
+        return AVAssetWriterInput(
+            mediaType: AVMediaTypeVideo,
+            outputSettings: [
+                AVVideoCodecKey: AVVideoCodecH264,
+                AVVideoHeightKey: 720 ,
+                AVVideoWidthKey: 1280
+            ]
+        )
+    }
+}
+
 /// Video Manager.
-class CaptureVideoManager: NSObject {
+class CaptureVideoManager {
 
     /**
      Capture video manager delegate.
@@ -45,18 +58,20 @@ class CaptureVideoManager: NSObject {
     private var timer: Timer?
 
     /**
+     The current video data buffer.
+     */
+    private var currentBuffer: CMSampleBuffer?
+
+    /**
      Set buffers into an asset writer input.
      */
-    private var assetWriterInput = AVAssetWriterInput(
-        mediaType: AVMediaTypeVideo,
-        outputSettings: [
-            AVVideoCodecKey: AVVideoCodecH264,
-            AVVideoHeightKey: 720 ,
-            AVVideoWidthKey: 1280
-        ]
-    )
+    private var assetWriterInput: AVAssetWriterInput = WriterInput.generate()
 
+    /**
+     Save Video Manager.
+     */
     private var saveVideoManager = SaveVideoManager()
+
 
     /**
      Capture a video buffer.
@@ -70,6 +85,7 @@ class CaptureVideoManager: NSObject {
             return
         }
 
+        self.currentBuffer = buffer
         assetWriterInput.append(buffer)
     }
 
@@ -105,12 +121,15 @@ class CaptureVideoManager: NSObject {
     /**
      Stop capture.
      */
-    func stopCapture() {
+    @objc func stopCapture() {
         self.timer?.invalidate()
         self.timer = nil
-        self._isCapturing = false
+        let endTime = CMSampleBufferGetPresentationTimeStamp(self.currentBuffer!)
+        saveVideoManager.finishWriting(endTime: endTime)
         let stopNotification = Notification(name: Notification.Name(rawValue: "stop_capture"))
         NotificationCenter.default.post(stopNotification)
         assetWriterInput.markAsFinished()
+        self.assetWriterInput = WriterInput.generate()
+        self._isCapturing = false
     }
 }

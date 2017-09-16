@@ -29,9 +29,19 @@ class CameraPreview: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        print("Camera preview awake")
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.startCaptureRequest(notification:)),
+            name: Notification.Name("start_capture_request"),
+            object: nil
+        )
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.captureRequest(notification:)), name: Notification.Name("capture"), object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.stopCaptureRequest(notification:)),
+            name: Notification.Name("stop_capture"),
+            object: nil
+        )
 
 
         #if (arch(i386) || arch(x86_64)) && os(iOS)
@@ -45,9 +55,17 @@ class CameraPreview: UIView {
     /**
      Catpure request received.
      */
-    func captureRequest(notification: Notification) {
+    func startCaptureRequest(notification: Notification) {
         print("capture request")
         self.canCapture = true
+    }
+
+    /**
+     Stop catpure request received.
+     */
+    func stopCaptureRequest(notification: Notification) {
+        print("stop capture request")
+        self.canCapture = false
     }
 }
 
