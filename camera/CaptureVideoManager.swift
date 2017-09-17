@@ -126,8 +126,8 @@ class CaptureVideoManager {
         self.timer = nil
         let endTime = CMSampleBufferGetPresentationTimeStamp(self.currentBuffer!)
         saveVideoManager.finishWriting(endTime: endTime)
-        let stopNotification = Notification(name: Notification.Name(rawValue: "stop_capture"))
-        NotificationCenter.default.post(stopNotification)
+//        let stopNotification = Notification(name: Notification.Name(rawValue: "stop_capture"))
+//        NotificationCenter.default.post(stopNotification)
         assetWriterInput.markAsFinished()
         self.assetWriterInput = WriterInput.generate()
         self._isCapturing = false

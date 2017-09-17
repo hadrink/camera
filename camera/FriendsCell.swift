@@ -41,9 +41,9 @@ class FriendsCell: UITableViewCell {
         super.awakeFromNib()
         self.backgroundColor = .clear
         self.progressCaptureBar.progress = 0
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleProgressCaptureBar(notification:)), name: Notification.Name("start_capture_request"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleProgressCaptureBar(notification:)), name: KPNotification.startCapture.name, object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.resetProgressBar(notification:)), name: Notification.Name("stop_capture"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resetProgressBar(notification:)), name: KPNotification.stopCapture.name, object: nil)
 
 
         print("Friends cell awake")
@@ -69,5 +69,6 @@ class FriendsCell: UITableViewCell {
         self.timer?.invalidate()
         self.timer = nil
         self.progressCaptureBar.progress = 0
+        self.duration = 0
     }
 }

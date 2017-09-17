@@ -25,6 +25,7 @@
 		7A4D92D91ED36A7C0082863D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A4D92D71ED36A7C0082863D /* LaunchScreen.storyboard */; };
 		7A4D92E41ED36A7D0082863D /* cameraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92E31ED36A7D0082863D /* cameraTests.swift */; };
 		7A4D92EF1ED36A7D0082863D /* cameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */; };
+		7A57D6311F6EF83F00A5AB0A /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57D6301F6EF83F00A5AB0A /* Notifier.swift */; };
 		7A7469771ED6CDE000F13B27 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469761ED6CDE000F13B27 /* MenuTableView.swift */; };
 		7A74697A1ED7402900F13B27 /* FriendsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7469791ED7402900F13B27 /* FriendsCollectionView.swift */; };
 		7A7469801ED7581600F13B27 /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A74697F1ED7581600F13B27 /* FriendsCell.xib */; };
@@ -77,6 +78,7 @@
 		7A4D92EA1ED36A7D0082863D /* cameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4D92EE1ED36A7D0082863D /* cameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraUITests.swift; sourceTree = "<group>"; };
 		7A4D92F01ED36A7D0082863D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A57D6301F6EF83F00A5AB0A /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		7A7469761ED6CDE000F13B27 /* MenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
 		7A7469791ED7402900F13B27 /* FriendsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCollectionView.swift; sourceTree = "<group>"; };
 		7A74697F1ED7581600F13B27 /* FriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCell.xib; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				7A10B4A71F24FDDF00F6C7EC /* CaptureVideoConfig.swift */,
 				7A26C5511F1BE32A009153D5 /* CaptureVideoManager.swift */,
 				7A34A3E71F1FDAE70032DE61 /* SaveVideoManager.swift */,
+				7A57D6301F6EF83F00A5AB0A /* Notifier.swift */,
 				7A0A041E1EE34CDB00B5E0E7 /* Device.swift */,
 				7A1C21341ED8449B00D80EDE /* CameraPreview.xib */,
 			);
@@ -398,6 +401,7 @@
 				7A1C21331ED8448A00D80EDE /* CameraPreview.swift in Sources */,
 				7A7469771ED6CDE000F13B27 /* MenuTableView.swift in Sources */,
 				7A7469841ED760AD00F13B27 /* FriendsCollectionViewCell.swift in Sources */,
+				7A57D6311F6EF83F00A5AB0A /* Notifier.swift in Sources */,
 				7A0A041B1EE33F1D00B5E0E7 /* VideoPreviewLayer.swift in Sources */,
 				7A4D92CF1ED36A7C0082863D /* AppDelegate.swift in Sources */,
 				7A26C5521F1BE32B009153D5 /* CaptureVideoManager.swift in Sources */,

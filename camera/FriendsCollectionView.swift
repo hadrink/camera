@@ -32,7 +32,7 @@ class FriendsCollectionView: UICollectionView {
 
         self.backgroundColor = .clear
         self.dataSource = self
-        self.delegate = self
+//        self.delegate = self
 
         print("Friends collection awake")
     }
@@ -64,18 +64,5 @@ extension FriendsCollectionView: UICollectionViewDataSource {
         }
 
         return cell
-    }
-}
-
-/// Friends collection view extension from UICollectionViewDelegate.
-extension FriendsCollectionView: UICollectionViewDelegate {
-
-    /**
-     Did select item.
-     */
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        let captureNotification = Notification(name: Notification.Name(rawValue: "start_capture_request"))
-        NotificationCenter.default.post(captureNotification)
     }
 }

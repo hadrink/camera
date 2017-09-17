@@ -32,14 +32,14 @@ class CameraPreview: UIView {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.startCaptureRequest(notification:)),
-            name: Notification.Name("start_capture_request"),
+            name: KPNotification.startCapture.name,
             object: nil
         )
 
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.stopCaptureRequest(notification:)),
-            name: Notification.Name("stop_capture"),
+            name: KPNotification.stopCapture.name,
             object: nil
         )
 
@@ -66,6 +66,7 @@ class CameraPreview: UIView {
     func stopCaptureRequest(notification: Notification) {
         print("stop capture request")
         self.canCapture = false
+        self.captureVideoManager.stopCapture()
     }
 }
 
